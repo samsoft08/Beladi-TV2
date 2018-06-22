@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">356499381176-7o812c4f11m36672ukihcvpam3f14r19.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://beladi-tv.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">356499381176</string>
+    <string name="google_api_key" translatable="false">AIzaSyDSFnrAjh_fXy4dpex84UNLvLrafVtDxng</string>
+    <string name="google_app_id" translatable="false">1:356499381176:android:27438381f15fd1c0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDSFnrAjh_fXy4dpex84UNLvLrafVtDxng</string>
+    <string name="google_storage_bucket" translatable="false">beladi-tv.appspot.com</string>
+</resources>

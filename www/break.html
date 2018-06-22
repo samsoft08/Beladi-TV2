@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
+<meta http-equiv="refresh" CONTENT="180">
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<style>
+.sub{
+	font-size=20;
+	font-weight:bold;
+	padding:  2px;
+	color:white;
+white-space: nowrap;
+font-family: TheSans;
+}
+.img{
+	font-size=22;
+	font-weight:bold;
+	color:red;
+		padding:  3px;
+
+}
+@font-face {
+    font-family: 'TheSans';
+    src: url('TheSans.woff') format('woff'),
+         url('TheSans.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+
+}
+.dv {
+
+}
+body { font-family: TheSans; }
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	
+$( document ).ready(function() {
+var ip = window.location.hostname;
+
+ var url="http://185.217.90.164/beladi/json-break.php" ;
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var sub=field.sub;
+  $("#lw").append(
+  "<img src='images/blogo.png' width='17' height='17'>"+sub
+   ) ;
+ });
+ });
+  });
+  </script>
+<table width='100%' height="10" align='center' cellspacing="0" class="sub" bgcolor="#ca373b">
+<tr>
+<td height="10">
+<marquee id="lw" class="dv" behavior="scroll" direction="right" scrollamount="1" scrolldelay="15" truespeed="truespeed" onmouseover="this.stop()" onmouseout="this.start()" border="0" style="margin:0;padding:0">
+
+</marquee>
+</td>
+<td bgcolor="#ffffff" class="img" width="30" >عاجــل</td>
+</tr>
+</table>
+</body>
+</html>

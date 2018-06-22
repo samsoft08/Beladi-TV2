@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "BeladiTv",
+  "short_name": "BeladiTv",
+  "version": "com.betasoft.beladitv",
+  "description": "NEWS Application.",
+  "author": "Sunil Kumar",
+  "icons": [],
+  "start_url": "index.html"
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+	<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+	<script type="text/javascript" src="engine1/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<!-- End WOWSlider.com HEAD section -->
+<style>
+@font-face {
+    font-family: 'TheSans';
+    src: url('TheSans.woff') format('woff'),
+         url('TheSans.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+body { font-family: TheSans; }
+</style>
+
+</head>
+<body style="background-color:#d7d7d7;margin:0">
+	
+	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+	<div id="wowslider-container1">
+	<div class="ws_images"><ul>
+		<li><a  onclick="myFunction()" ><img src="images/1.jpg"  id="wows1_0"/></a></li>
+		<li><a  onclick="myFunction()"><img src="images/3.jpg"  id="wows1_1"/></a></li>
+		<li><a target ="I3" href="programs.html" onclick="myFunction()"><img src="images/2.jpg"  id="wows1_2"/></a></li>
+	</ul></div>
+       <div class="ws_script" style="position:absolute;left:-99%"><a href="#">css image gallery</a> </div>
+	<div class="ws_shadow"></div>
+	</div>	
+	<script type="text/javascript" src="engine1/wowslider.js"></script>
+	<script type="text/javascript" src="engine1/script.js"></script>
+	<!-- End WOWSlider.com BODY section -->
+	 <script>
+function myFunction() {
+     
+	  $('#I3').css('height','500px');
+	  $('#iframediv').stop(true).slideUp(1500);
+	  }
+	  
+</script>
+</body>
+</html>

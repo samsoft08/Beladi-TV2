@@ -1,0 +1,502 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<link rel="stylesheet" type="text/css" href="styles.css">
+     <script type="text/javascript" src="cordova.js"></script>
+     <script src="js/jquery-2.1.3.js"></script>
+     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+     <script type="text/javascript" src="js/SocialSharing.js"></script>
+	 <link rel="stylesheet" href="js/jquery.mobile-1.4.5.css" />
+	 <style>
+	 .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+    color: white;
+    text-align: center;
+}
+	 .ui-page {
+    -webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
+box-shadow: none;
+}
+body{
+   -webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
+box-shadow: none;
+}
+	 .grad{
+	 background: -webkit-linear-gradient(top, #601348 0%,#56224c 30%,#17115e 100%); /* Chrome10-25,Safari5.1-6 */
+	  background-image: url("images/back.jpg");
+	  background-size:     cover;                  
+    background-repeat:   no-repeat;
+    background-position: center center;   
+	 display:block;
+	 height:100%;
+	 }
+	 .grad2{
+
+}
+body html {
+-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none ;
+}
+
+ .containerx {
+    position: relative;
+    text-align: center;
+    color: black;
+    border-radius:25px 25px 0 0;
+width:100%;
+	
+}
+
+.bottom-left {
+    position: absolute;
+    top: 100%;
+    left: 10%;
+	color:#820606;
+	font-size:18px;
+}
+
+.top-left {
+    position: absolute;
+    top: 150%;
+     right: 10%;
+}
+.top-leftx {
+    position: absolute;
+   top: 160%;
+   right: 30%;
+     color:#4a054e;
+}
+.top-leftxx {
+    position: absolute;
+   top: 170%;
+    right: 30%;
+	  color:#4a054e;
+}
+.top-right {
+    position: absolute;
+   top: 120%;
+   right: 10%;
+}
+.top-rightx {
+    position: absolute;
+   top: 130%;
+   right: 30%;
+   color:#4a054e;
+}
+.top-rightxx {
+    position: absolute;
+   top: 140%;
+    right: 30%;
+	  color:#4a054e;
+}
+.bottom-right {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+   
+}
+
+.centered {
+    position: absolute;
+    bottom: 0%;
+  
+	 width:100%;
+      color: white;
+	 font-size:26px;
+	-webkit-text-stroke: 1px black;
+	background-color:rgba(80,10,50,0.8);
+	
+}
+.centered2 {
+ position: absolute;
+    top: 80%;
+    color: white;
+	 font-size:20px
+   
+     right: 50%;
+      -webkit-text-stroke: 2px black;
+}
+.centeredx {
+    position: absolute;
+    top: 80%;
+     right: 10%;
+   
+     color: white;
+	 font-size:20px
+ -webkit-text-stroke: 2px black;
+}
+li{
+width:85%; 
+
+height:400px;
+background-color:#f6f7e1;
+border-radius:25px ;
+left:-50px;
+}
+	 </style>
+	 <script>
+	 $(document).bind("mobileinit", function(){
+$.extend($.mobile, {
+metaViewportContent: "width=device-width, height=device-height, minimum-scale=1, maximum-scale=1"
+});
+});
+	 </script>
+   </head> 
+   
+<body style="margin:0;" > 
+
+<div class="grad">
+                  <header>
+				 <h11> <a target="I3" href="main.html" style="color:white;	text-decoration:none;" ><img src="images/home.png" width="20"> </a> </h11>
+	<h22 id="ppg">البرامج</h22>	
+		</div>
+		<div class="footer">
+  <p><img src="images/swipe.png" height="20"></p>
+</div>
+<!----------------------------------------------------- Start of first page: #one -->
+<div data-role="page" id="one" style="width:100%;background-color:rgba(0,100,100,0);top:30px; top:30px;" data-dom-cache="true" data-next="two">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+
+<ul class="containerxx" id="listview" style="width:100%" onclick="pd('kasi');">
+ </ul>
+  
+<script type="text/javascript">
+		
+$(document).on('pagebeforeshow', '#one', function(){
+
+ $("#listview").html(
+ "<li ><div class='containerx'><a href='#' data-transition='slide'><img src='programs/kasi.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left'>مع سرمد الحيدري</div>"+
+    "<div class='top-left'>يعاد في</div>"+
+     "<div class='top-leftx'>السبت  الساعة 12:00</div>"+
+       "<div class='top-leftxx'>الاثنين  الساعة 14:00</div>"+
+        "<div class='top-right'>يعرض في</div>"+
+         "<div class='top-rightx'>السبت  الساعة 12:00</div>"+
+          "<div class='top-rightxx'>الاثنين  الساعة 14:00</div>"+
+            "<div id='cen'  class='centered' >قاسي الكلام</div>"+
+"</div></li>"
+   ) ;
+  
+ 
+  });
+  </script>
+ </div><!-- /content  -->
+ </div><!-- /page #1 -->
+<!---------------------------------------------------------- Start of second page: #2 -->
+<div data-role="page" id="two" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="one" data-next="three">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="listwo" style="width:100%" onclick="pd('lika');">>
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#two', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#listwo").html(
+ "<li ><div class='containerx'><a href='#'  data-transition='slide'><img src='programs/lika.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left'>مع د. هاني عبد الصاحب</div>"+
+  "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>السبت  الساعة 12:00</div>"+
+    "<div class='top-leftxx'>الاثنين  الساعة 14:00</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>السبت  الساعة 12:00</div>"+
+       "<div class='top-rightxx'>الاثنين  الساعة 14:00</div>"+
+        "<div class='centered' >لقاء خاص</div>"+
+"</div></li></ul>"
+   ) ;
+  
+  });
+ 
+ </script>
+   </div><!-- /content  -->
+</div><!-- /page #2 -->
+<!-- Start of second page: #3 -->
+<div data-role="page" id="three" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="two" data-next="four">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis3" style="width:100%" onclick="pd('sharia');">>
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#three', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis3").html(
+ "<li ><div class='containerx'><a href='#'  data-transition='slide'><img src='images/sharia.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' style='font-size:14px;'>مع الشيخ علي الابراهيمي</div>"+
+  "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>السبت  الساعة 12:00</div>"+
+    "<div class='top-leftxx'>الاثنين  الساعة 14:00</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>السبت  الساعة 12:00</div>"+
+       "<div class='top-rightxx'>الاثنين  الساعة 14:00</div>"+
+        "<div class='centered'>الشريعة و الناس</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #3 -->
+<!-------------------------------------------------- Start of second page: #4 -->
+
+<div data-role="page" id="four" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="three" data-next="five">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis4" style="width:100%" onclick="pd('thania');">>
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#four', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis4").html(
+ "<li ><div class='containerx'><a href='#'  data-transition='slide'><img src='images/thania.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' >مع فـراس الفـوادي</div>"+
+  "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>السبت  الساعة 12:00</div>"+
+    "<div class='top-leftxx'>الاثنين  الساعة 14:00</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>السبت  الساعة 12:00</div>"+
+       "<div class='top-rightxx'>الاثنين  الساعة 14:00</div>"+
+        "<div class='centered'>حديث الثانية</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #4 -->
+
+
+<!-------------------------------------------------- Start of second page: #5 -->
+
+<div data-role="page" id="five" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="four" data-next="six">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis6" style="width:100%">
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#five', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis6").html(
+ "<li ><div class='containerx'><a href='prog-details.html?prog=islah'  data-transition='slide'><img src='programs/malam.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' >مع اللواء عبد الكريم خلف</div>"+
+  "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>السبت  الساعة 12:00</div>"+
+    "<div class='top-leftxx'>الاثنين  الساعة 14:00</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>السبت  الساعة 12:00</div>"+
+       "<div class='top-rightxx'>الاثنين  الساعة 14:00</div>"+
+        "<div class='centered'>مالم يعلن</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #6 -->
+<!------------------------------------------------------ Start of second page: #6 -->
+
+<div data-role="page" id="six" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="five" data-next="seven">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis7" style="width:100%">
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#six', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis7").html(
+ "<li ><div class='containerx'><a href='prog-details.html?prog=dinar'  data-transition='slide'><img src='programs/naho.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' >مع أسـعد زلزلي</div>"+
+ "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'> السبت 3:00 بعد الظهر</div>"+
+   
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>االاربعاء 8:30 مساءا</div>"+
+       "<div class='top-rightxx'>الخميس 12:00 ظهرا</div>"+
+        "<div class='centered'>نحو البرلمان</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #7 -->
+<!------------------------------------------------------------------- Start of second page: #7 -->
+
+<div data-role="page" id="seven" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="six" data-next="eight">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis8" style="width:100%">
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#seven', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis8").html(
+ "<li ><div class='containerx'><a href='prog-details.html?prog=kul'  data-transition='slide'><img src='programs/nisf.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' >مع زهــــراء</div>"+
+ "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>الخميس 9:00 صباحا</div>"+
+    "<div class='top-leftxx'>الاحـد 9:00 صباحا</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>الاربعاء 5:00 مساءا</div>"+
+    
+        "<div class='centered'>نصف المجتمع</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #7 -->
+
+<!------------------------------------------------------------------- Start of second page: #8 -->
+
+<div data-role="page" id="eight" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="seven" data-next="nine">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis88" style="width:100%">
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#eight', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis88").html(
+ "<li ><div class='containerx'><a href='prog-details.html?prog=shabab'  data-transition='slide'><img src='programs/shabab.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' ></div>"+
+ "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>الخميس 9:00 صباحا</div>"+
+    "<div class='top-leftxx'>الاحـد 9:00 صباحا</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>الاربعاء 5:00 مساءا</div>"+
+    
+        "<div class='centered'>شباب اكاديمي</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #8 -->
+<!------------------------------------------------------------------- Start of second page: #9 -->
+
+<div data-role="page" id="nine" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="eight" data-next="ten">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis9" style="width:100%">
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#nine', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis9").html(
+ "<li ><div class='containerx'><a href='prog-details.html?prog=diwan'  data-transition='slide'><img src='programs/diwan.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' > </div>"+
+ "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>الخميس 9:00 صباحا</div>"+
+    "<div class='top-leftxx'>الاحـد 9:00 صباحا</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>الاربعاء 5:00 مساءا</div>"+
+    
+        "<div class='centered'>دواوين اهلنا</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #9 -->
+<!------------------------------------------------------------------- Start of second page: #10 -->
+
+<div data-role="page" id="ten" style="background-color:rgba(0,100,100,0);top:30px;"  data-dom-cache="true"  data-prev="nine" data-next="ele">
+	<div id="containerm" data-role="content" style="width:100%;margin: 6%;">
+<ul class="containerxx" id="lis10" style="width:100%">
+ </ul>
+ 
+ 		<script type="text/javascript">
+$(document).on('pagebeforeshow', '#ten', function(){
+ //$( "dive.bottom-left,div.top-left,div.top-leftx,div.top-leftxx,div.top-right,div.top-rightx,div.top-rightxx,div.centeredx" ).toggle( "fade" );
+ $("#lis10").html(
+ "<li ><div class='containerx'><a href='prog-details.html?prog=foption'  data-transition='slide'><img src='programs/foption.jpg' style='width:100%; height:200px;border-radius:25px 25px 0 0;'></a>"+
+  "<div class='bottom-left' > </div>"+
+ "<div class='top-left'>يعاد في</div>"+
+   "<div class='top-leftx'>الخميس 9:00 صباحا</div>"+
+    "<div class='top-leftxx'>الاحـد 9:00 صباحا</div>"+
+     "<div class='top-right'>يعرض في</div>"+
+      "<div class='top-rightx'>الاربعاء 5:00 مساءا</div>"+
+    
+        "<div class='centered'>فول اوبشن</div>"+
+"</div></li></ul>"
+   ) ;
+    });
+  </script>
+   </div><!-- /content  -->
+</div><!-- /page #10 -->
+<!----------------------------------------------------------- Start of  Program details-->
+<script>
+function pd(ppp){
+window.location.href="prog-details.html?prog="+ppp;
+    };
+</script>
+<!---------------------------------------------------------- End of program details-->
+
+
+
+<script type="text/javascript">
+$(document).on('swipeleft', '.ui-page', function(event){    
+    if(event.handled !== true) // This will prevent event triggering more then once
+    {    
+        var nextpage = $.mobile.activePage.next('[data-role="page"]');
+        // swipe using id of next page if exists
+        if (nextpage.length > 0) {
+            $.mobile.changePage(nextpage, {transition: "flow", reverse: false}, true, true);
+		//	$( "div.centered" ).toggle( "fade" );
+		 
+        }
+        event.handled = true;
+    }
+    return false;         
+});
+
+$(document).on('swiperight', '.ui-page', function(event){     
+    if(event.handled !== true) // This will prevent event triggering more then once
+    {      
+        var prevpage = $(this).prev('[data-role="page"]');
+        if (prevpage.length > 0) {
+            $.mobile.changePage(prevpage, {transition: "flow", reverse: true}, true, true);
+	//		$( "div.centeredx" ).toggle( "fade" );
+		
+        }
+        event.handled = true;
+    }
+    return false;            
+});
+</script>
+
+
+
+
+<script>// share
+function shr() {
+console.log("Share clicked");
+// this is the complete list of currently supported params you can pass to the plugin (all optional)
+var options = {
+  message: 'share this', // not supported on some apps (Facebook, Instagram)
+  subject: 'the subject', // fi. for email
+  files: ['', ''], // an array of filenames either locally or remotely
+  url: 'https://www.website.com/foo/#bar?a=b',
+  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+}
+
+var onSuccess = function(result) {
+  console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+  console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+}
+
+var onError = function(msg) {
+alert(msg);
+  console.log("Sharing failed with message: " + msg);
+}
+
+window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+};
+</script>
+</body>
+</html>

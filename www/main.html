@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css" />
+<link rel="stylesheet" type="text/css" href="styles.css">
+    
+     <script src="js/jquery-2.1.3.js"></script>
+     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+     <script type="text/javascript" src="js/SocialSharing.js"></script>
+     <script type="text/javascript" src="js/share.js"></script>
+<script>
+
+function xxx(aa) {
+		window.location = aa;
+	}
+</script>
+<style>
+header h1 { font-size: 14px; font-family: TheSans; font-weight: bold; margin-top:2px; margin-right:10px; text-align: right; color: #efefef; text-shadow: 1px 1px 0px #000; }
+</style>
+</head>
+<body style="background-color:#000;">
+                 <header>
+	        	<h1 style="margin-top:10px;">الرئيسة</h1>
+		</header>
+<!-- Start of first page: #one -->
+<div data-role="page" id="one" style=" background-color:#35212a;top:10px;">
+
+<div id="view" >
+	<div id="container" data-role="content" >
+<ul class="list" id="listview" style=" marign: 0 auto; padding: 0; text-align: center;">
+ </ul>
+ </div><!-- /content  -->
+ </div><!--/view-->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+ $(document).ready(function() {
+
+
+ var url="http://185.217.90.164/beladi/json-news-top3.php";
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+  var type=field.type;
+var length = 54;
+ if (type == "محلية") {
+ $("#listview").append(
+    "<li width='100%' height='130' style='border-radius:3px;width:100%;height:185px; background-color:#4e4057;display:inline-block;margin:4px auto;text-align:center;top:6px;' >"
+
+  +"<a href='news.html#local' onclick='xxx(\"news.html#local\")'  >"
+  +"<img src='"+pic+"'  width='95%' height='130' style='top:3px;border-radius:3px;display:inline-block;position:relative; text-align:center;' />"
+    +"</a><h21 style='color:#ffffff;width:90%;font-size:11px;position:relative;bottom:-12px;'>"+sub+"</h21>"
+  +"</li>"
+   ) ;
+   };
+   if (type == "دولية") {
+
+   var trimmedString = sub.length > length ?
+  sub.substring(0, length - 1) + "..." :  sub
+
+ $("#listview").append(
+  "<li width='50%' height='160' style='border-radius:3px;height:180px;display:inline-block;width:49%;background-color:#4e4057;float:right;margin:4px auto;'>"
+ + "<a href='news.html#inter' onclick='xxx(\"news.html#inter\")' >"
+  +"<img src='"+pic+"'  align='center' width='100%' height='100' style='top:0;border-radius:3px;position:relative;'>"
+
+  +"<h2 style='font-size:11px;float:center;padding: 1px ;right:1px;top:105px;position: absolute;color:#ffffff;width:90%;line-height:17px;'>"+trimmedString+"</h2>"
+  +"</li></a>"
+   ) ;
+   };
+   if (type == "رياضية") {
+    var trimmedString = sub.length > length ?
+  sub.substring(0, length - 1) + "..." :  sub
+
+ $("#listview").append(
+ "<li width='49%' height='160' style='border-radius:3px;height:180px;display:inline-block;width:49%;background-color:#4e4057;margin:4px auto;'>"
+  +"<a href='news.html#sport' onclick='xxx(\"news.html#sport\")' >"
+ +"<img src='"+pic+"'  align='center' width='100%' height='100' style='top:0;border-radius:3px;position:relative;'>"
+
+  +"<h2 style='font-size:11px;float:center;padding: 1px ;right:1px;top:105px;position: absolute;color:#ffffff;width:90%;line-height:17px;'>"+trimmedString+"</h2>"
+  +"</li></a>"
+   ) ;
+   };
+  });
+ });
+ });
+ </script>
+ <!-----------------Programs -------------->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+ $(document).ready(function() {
+ var i = 0;
+
+ var url="http://185.217.90.164/beladi/json-progs3.php";
+ $.getJSON(url,function(result){
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var prog=field.prog;
+ var name=field.name;
+ var sub=field.sub;
+
+var length = 44;
+i += 1;
+
+ if (i == 1) {
+ var pa = "prog-details.html?prog="+prog;
+ $("#listview").append(
+
+  "<li width='100%' height='130' style='border-radius:3px;width:100%;height:185px; background-color:#4e4057;display:inline-block;margin:4px auto;text-align:center;top:6px;' >"
+  +"<a href='#' onclick='xxx(\""+pa+"\")' >"
+  +"<img src='http://185.217.90.164/beladi/programs/"+prog+".jpg'  align='center' width='95%' height='130' style='top:3px;border-radius:3px;position:relative;'>"
+  +"<h21 style='font-size:11px;float:right;padding: 2px ;margin-right:2px;right:10px;top: 140px;position: absolute;color:#ffffff;width:90%;'>"+sub+"</h21>"
+  +"</li></a>"
+   ) ;
+   };
+   if (i == 2) {
+    var pa = "prog-details.html?prog="+prog;
+  var trimmedString = sub.length > length ?
+  sub.substring(0, length - 1) + "..." :  sub
+ $("#listview").append(
+  "<li width='70%'  style='border-radius:7px;height:150px;display:inline-block;width:70%;margin:4px auto;"
+  +"background-color:#4e4057; '>"
+ + "<a href='#' onclick='xxx(\""+pa+"\")' >"
+  +"<img src='http://185.217.90.164/beladi/programs/"+prog+".jpg' align='center' width='100%' height='100' style='top:0;border-radius:7px;position:relative;'>"
+  +"<h2 style='font-size:11px;text-shadow: 0px 0px 0px #000;float:center;padding: 1px ;right:1px;bottom: -20px;position: absolute;color:#ffffff;width:90%;'>"+trimmedString+"</h2>"
+  +"</li></a>"
+   ) ;
+   };
+   if (i == 2) {
+  var trimmedString = sub.length > length ?
+  sub.substring(0, length - 1) + "..." :  sub
+  $("#listview").append(
+ "<li  style='border-radius:3px;height:150px;display:inline-block;width:25%;background-color:#cccccc;float:right;margin:4px auto;vertical-align:center;'>"
+  +"<a href='#' onclick='xxx(\"programs.html\")'>"
+ +"<img src='http://185.217.90.164/beladi/programs/programs.jpg' align='center' width='100%'  height='150' style='top:0;border-radius:3px;position:relative;'>"
+
+  +"</li></a>"
+   ) ;
+   };
+  });
+ });
+ });
+ </script>
+
+ <!-----------------Reports -------------->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+ $(document).ready(function() {
+
+
+ var url="http://185.217.90.164/beladi/json-reports2.php";
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+
+var length = 74;
+
+
+
+
+  var trimmedString = sub.length > length ?
+  sub.substring(0, length - 1) + "..." :  sub
+ $("#listview").append(
+  "<li style='border-radius:7px;height:padding:3px; margin:2px;100px;display:inline-block;width:48%;text-align:center;"
+  +"background: -webkit-linear-gradient(top, #264dc1 0%,#264dc1 66%,#af6e7e 99%); '>"
+ + "<a href='news.html#sport' onclick='xxx(\"reports.html\")' >"
+  +"<img src='images/rep-back.png' align='center' width='100%' height='100' style='top:0;border-radius:7px;position:relative;'>"
+      +"<h33 style='float:left;padding: 2px ;left:5px;top: 4px;position: absolute;font-size:11px;color:#ffffff;width:90%;'>تقارير</h33>"
+ +"<h33 style='font-size:11px;float:center;margin:3px;padding: 1px ;right:1px;top: 36px;position: absolute;color:#ffffff;width:90%;'>"+trimmedString+"</h33>"
+  +"</li></a>"
+   ) ;
+
+
+  });
+ });
+ });
+ </script>
+
+
+
+
+
+
+ </div><!-- /page one -->
+ <!-- Start of second page: #two -->
+<div data-role="page" id="two" >
+
+	<div id="view" >
+	<div id="container" data-role="content" >
+
+<script type="text/javascript">
+
+$(document).on('pagebeforeshow', '#two', function(){
+var ip = window.location.hostname;
+var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-details.php?id="+id ;
+
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+var news=field.news;
+var view=field.view;
+var taga=field.taga;
+if (taga !== '' ){
+ storeObject.tagaa = taga;
+}
+ view==view++;
+var dataString="id="+id+"&view="+view;
+request =$.ajax({
+ type: "POST",
+ url:"http://185.217.90.164/beladi/json-news-update.php",
+ data: dataString,
+ crossDomain: true,
+ cache: false,
+
+});
+ $("#lw").html(
+
+ "<li class='clearfix'><img src='"+pic
+ +"' class='thumbnail' width='95%' height='50%'></li><li class='clearfix'><h5>"+sub
+ +"</h5></li>"
+ +"<li><h6 style='font-size:12px;color:grey;text-align:right;float:right;'>"+date +"</h6></li>"
+ +"<li class='clearfix'><h3>"+news+"</h3></li>"
+ +"<li class='clearfix' style='font-size:12px;color:grey;display: inline-block;text-align:right;float:right;' ><h5 style='font-size:12px;'>"+view+"   المشاهدات</h5></li>"
+ +"<li class='clearfix'><img src='images/share.png' onclick='shr()' width='20'> </li>"
+ +"<li class='fasil'></li>"
+ +"<li class='clearfix' style='padding: 18px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'><h6 >أخبار ذات صلة</h6></li>"
+
+ ) ;
+
+ //   var tga = storeObject.tagaa;
+   var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-relate.php?id="+id ;
+
+$("#lwww").html("");
+ $.getJSON(url,function(result){
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+
+ $("#lwww").html(
+  "<li></li><a href='#three' onclick='storeObject.idd="+id
+  +"' data-transition='slide'><li class='clearfix' style='float:right;'><img src='"+pic
+  +"' class='thumbnail' width='80' height='80'><h2 style='float:right;margin-top:13px'>"+sub+"</h2></li>"
+  +"<li style='margin-top:52px;'><span class='price' >"+date+"</span></li></a>"
+   ) ;
+ });
+ });
+
+
+
+ });
+ //relat();
+ });
+  //--------------------------------------------
+  });
+  </script>
+
+	<ul class="list" id="lw">
+				</ul>
+	<p></p>
+	<ul class="list" id="lwww">
+				</ul>
+	</div><!-- /content -->
+	 </div><!--/view-->
+
+	<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("#one",{transition:'slide',reverse: true});
+    }
+   event.preventDefault();
+});
+     </script>
+
+</div><!-- /page two -->
+<!-- Start of second page: #three -->
+<div data-role="page" id="three" >
+
+	<div id="view" >
+	<div id="container" data-role="content" >
+
+<script type="text/javascript">
+
+$(document).on('pagebeforeshow', '#three', function(){
+//var ip = window.location.hostname;
+var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-details.php?id="+id ;
+
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+ var news=field.news;
+var view=field.view;
+var taga=field.taga;
+if (taga !== '' ){
+ storeObject.tagaa = taga;
+}
+ view==view++;
+var dataString="id="+id+"&view="+view;
+request =$.ajax({
+ type: "POST",
+ url:"http://185.217.90.164/beladi/json-news-update.php",
+ data: dataString,
+ crossDomain: true,
+ cache: false,
+
+});
+ $("#lw3").html(
+
+ "<li class='clearfix'><img src='"+pic
+ +"' class='thumbnail' width='95%' height='50%'></li><li class='clearfix'><h5>"+sub
+ +"</h5></li>"
+ +"<li><h6 style='font-size:12px;color:grey;text-align:right;float:right;'>"+date +"</h6></li>"
+ +"<li class='clearfix'><h3>"+news+"</h3></li>"
+ +"<li class='clearfix' style='font-size:12px;color:grey;display: inline-block;text-align:right;float:right;' ><h5 style='font-size:12px;'>"+view+"   المشاهدات</h5></li>"
+ +"<li class='clearfix'><img src='images/share.png' onclick='shr()' width='20'> </li>"
+ +"<li></li><li class='fasil'></li>"
+ +"<li class='clearfix' style='padding: 18px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'><h6 >أخبار ذات صلة</h6></li>"
+
+ ) ;
+
+ //   var tga = storeObject.tagaa;
+ //  var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-relate.php?id="+id ;
+$("#lwww3").html("");
+ $.getJSON(url,function(result){
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+
+ $("#lwww3").html(
+   "<li></li><a href='#two' onclick='storeObject.idd="+id
+  +"' data-transition='slide'><li class='clearfix' style='float:right;'><img src='"+pic
+  +"' class='thumbnail' width='80' height='80'><h2 style='float:right;margin-top:13px'>"+sub+"</h2></li>"
+  +"<li style='margin-top:52px;'><span class='price' >"+date+"</span></li></a>"
+   ) ;
+ });
+ });
+
+
+
+ });
+ //relat();
+ });
+  //--------------------------------------------
+  });
+  </script>
+
+	<ul class="list" id="lw3">
+				</ul>
+	<p></p>
+	<ul class="list" id="lwww3">
+				</ul>
+	</div><!-- /content -->
+	 </div><!--/view-->
+
+	<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("#one",{transition:'slide',reverse: true});
+    }
+   event.preventDefault();
+});
+     </script>
+
+</div><!-- /page three -->
+<script>// share
+function shr() {
+console.log("Share clicked");
+// this is the complete list of currently supported params you can pass to the plugin (all optional)
+var options = {
+  message: 'share this', // not supported on some apps (Facebook, Instagram)
+  subject: 'the subject', // fi. for email
+  files: ['', ''], // an array of filenames either locally or remotely
+  url: 'https://www.website.com/foo/#bar?a=b',
+  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+}
+
+var onSuccess = function(result) {
+  console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+  console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+}
+
+var onError = function(msg) {
+alert(msg);
+  console.log("Sharing failed with message: " + msg);
+}
+
+window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+};
+</script>
+</body>
+</html>

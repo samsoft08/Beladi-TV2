@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+   <head>
+
+      <title>jQuery.mmenu playground</title>
+      <meta charset="utf-8" />
+      <link type="text/css" href="layout.css" rel="stylesheet" />
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+      <!-- Include jQuery.mmenu .css files -->
+	  <link type="text/css" rel="stylesheet" href="mmenu/demo/css/demo.css" />
+	  <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+	  	   <script type="text/javascript" src="cordova.js"></script>
+      <!-- Include jQuery and the jQuery.mmenu .js files -->
+      <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery.mmenu.all.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+      <!-- Fire the plugin onDocumentReady -->
+      <script type="text/javascript">
+         jQuery(document).ready(function( $ ) {
+            $("#menu").mmenu({
+               "extensions": [
+                  "shadow-page", "shadow-panels", "listview-large","pagedim-black"
+               ],
+               
+            });
+			
+         });
+      </script>
+	  <script type="text/javascript">
+	  function myFunction()
+{
+	  var API = $("#menu").data( "mmenu" );
+      API.close();
+      //$('#iframediv').fadeOut(1000);
+	  $('#I3').css('height','500px');
+	  $('#iframediv').stop(true).slideUp(1500);
+	  }
+	  </script>
+	  <style>
+	  @font-face {
+    font-family: 'TheSans';
+    src: url('TheSans.woff') format('woff'),
+         url('TheSans.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+}
+body {
+    font-family: TheSans;
+	margin:0;
+}
+html { 
+}
+.mm-panels .mm-hasnavbar:first-child{
+  padding-top:0;
+}
+.mm-title {
+display: none;
+}
+.ifrm {
+display: block;
+  position: relative;
+  z-index: 200;
+}
+.tablo {
+margin:0;
+padding:0;
+top:0;
+}
+.I3{display: block; width: 100%; height: 100%; 
+}
+.I33{display: block; width: 100%; height: 100%; 
+border: none;
+margin-bottom:0;
+position: absolute;
+}
+header h1 { font-size: 14px; font-family: TheSans; font-weight: bold; margin-top:2px; margin-right:10px; text-align: right; color: #efefef; text-shadow: 1px 1px 0px #000; }
+header { 
+display: block;
+position: relative; 
+top: 0px;
+z-index: 9999;
+height: 20px;
+opacity: 0.8;
+width: 100%;
+max-width: 800px;
+border-bottom: 1px solid #262422;
+-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4); 
+-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4); 
+box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+background: -webkit-linear-gradient(top, #701c63 1%,#701f7f 42%,#450956 52%,#4d0e60 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
+</style>
+
+   </head>
+   <body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" style="width: 100%; height: 100%;     position: fixed;">
+
+      <!-- The page -->
+ <div class="page" style="width: 100%; height: 100%; ">
+       <div class="header">
+            <div style="position:absolute;display: inline-block;top:0;left:0;">
+		       <img src="images/bback.png" width="100%" height="40" /><a href="#menu"><span></span></a>
+	        </div>	
+       </div>
+   <div class="content" id="main" style="margin:0; padding:0;position: relative;">
+      <div id="iframediv" >
+           <iframe name="222"  id="222" marginwidth="0" marginheight="0" width="100%" height="115" scrolling="no" align="center" border="0" frameborder="0" src="prog_scroll.html" allowFullScreen>
+    	   </iframe>
+      </div>
+      <div id="ifrm" id="i33" >
+         <iframe name="scrol"  marginwidth="0" marginheight="0" width="100%" height="40" scrolling="no" align="center" border="0" frameborder="0" src="break.html" allowFullScreen>
+		 </iframe>
+ 
+         <iframe id="I3"  name="I3" class="I3" marginheight="0" width="100%"  height="100%" scrolling="yes"  border="0" frameborder="0" src="news.html"  allowFullScreen>
+	     </iframe>
+		 <script>
+	     $().ready(function() {
+         $('#I3').height($(window).height() - 197);
+         });
+	     </script>
+      </div>
+   </div>
+</div>
+
+      <!-- The menu -->
+    <nav id="menu">
+         <ul><img src="images/menu2.png" width="100%" height="100%">
+           
+                  <li><a target ="I3" href="news.html" onclick="myFunction()">الرئـيـســـــة</a></li>
+                  <li><a target ="I3" href="live.php" onclick="myFunction()">البث المباشر</a></li>
+                  <li><a target ="I3" href="news.html" onclick="myFunction()">الأخـــــــــبار</a></li>
+				  <li><a target ="I3" href="reports.html" onclick="myFunction()">تـقـــــــــارير</a></li>
+				  <li><a target ="I3" href="programs.html" onclick="myFunction()">بـرامــــــــــج</a></li>
+				  <li><a target ="I3" href="ducumentry.html" onclick="myFunction()">وثائقي بلادي</a></li>
+         </ul>
+      </nav>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+   </body>
+</html>

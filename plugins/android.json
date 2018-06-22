@@ -1,0 +1,59 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "phonegap-plugin-push": {
+      "FCM_VERSION": "11.0.1",
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.betasoft.beladitv"
+    }
+  }
+}

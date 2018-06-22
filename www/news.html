@@ -1,0 +1,623 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css" />
+<link rel="stylesheet" type="text/css" href="styles.css">
+     <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+     <script src="js/jquery-2.1.3.js"></script>
+     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+     <script type="text/javascript" src="js/SocialSharing.js"></script>
+     <!--<script type="text/javascript" src="js/share.js"></script>-->
+	
+<style>
+.ulx {
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+ }
+ #ul {
+  font-size: 0;
+  position: absolute;
+  padding: 0;
+  top:11px;
+  width: 100%;
+  height: 20px;
+  margin: 0 auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#li {
+  display: inline-block;
+  width: 33%;
+  height: 20px;
+  background: #eeeeee;
+  font-size: 16px;
+  text-align: center;
+  line-height: 14px;
+  color: #000;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+   top:10px;
+  
+}
+#lii {
+    display: inline-block;
+  width: 33%;
+  height: 20px;
+  background: #eeeeee;
+  font-size: 16px;
+  text-align: center;
+  line-height: 14px;
+  color: #000;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+   top:10px;
+}
+#liii {
+    display: inline-block;
+  width: 33%;
+  height: 20px;
+  background: #eeeeee;
+  font-size: 16px;
+  text-align: center;
+  line-height: 14px;
+  color: #000;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+   top:10px;
+}
+
+
+
+.slider {
+ display: inline-block;
+  width: 33%;
+  height: 60px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 60px;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  display: block;
+  position: absolute;
+  bottom: 8px;
+  height: 2px;
+  background: #fc7070;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  top:30px;
+  right: 0;
+  float: right;
+}
+
+/*  Ripple */
+
+
+.ripple {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  position: absolute;
+  opacity: 1;
+}
+
+.rippleEffect {
+  -webkit-animation: rippleDrop .6s linear;
+  animation: rippleDrop .6s linear;
+}
+ @-webkit-keyframes 
+rippleDrop {  100% {
+ -webkit-transform: scale(2);
+ transform: scale(2);
+ opacity: 0;
+}
+}
+ @keyframes 
+rippleDrop {  100% {
+ -webkit-transform: scale(2);
+ transform: scale(2);
+ opacity: 0;
+}
+}
+a {
+font-size: 14px;
+color : #6f6b70;
+
+}
+.price{
+font-size: 10px;
+color : #51634a;
+}
+
+</style>
+
+	 </head> 
+<body> 
+                 <header>
+				 <h11> <a target="I3" href="main.html" style="color:white;	text-decoration:none;" ><img src="images/home.png" width="20"> </a> </h11>
+	<h22 id="ppg">الاخـبار</h22>	
+		<div id="ul">
+<ul id="ul">
+<li id="li"><a href='#sport' onclick="ee();" data-transition="slide">رياضة</a></li>
+<li id="lii"><a href='#inter' onclick="ee();" data-transition="slide">دولية</a></li>
+<li id="liii"><a href='#local' onclick="ee();" data-transition="slide">محلية</a></li>
+<li class="slider"></li>
+</ul>	
+	    </div>		
+				
+				
+				
+		</header>
+	<script>
+function getUrlVars(id) {
+ var vars = [], hash;
+ var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+ for (var i = 0; i < hashes.length; i++) {
+ hash = hashes[i].split('=');
+ vars.push(hash[0]);
+ vars[hash[0]] = hash[1];
+//alert(vars);
+ }
+ return vars;
+}
+</script>	
+		
+		
+		
+<!-- Start of first page: #politic -->
+<div data-role="page" id="local" style="top:30px;" >
+<div id="view" >
+	<div id="container" data-role="content" >	
+<ul class="list" id="listview" >
+ </ul>
+ </div><!-- /content  -->
+ </div><!--/view-->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+$(document).on('pagebeforeshow', '#local', function(){
+$("#listview").html("") ;
+ var url="http://185.217.90.164/beladi/json-news.php?news=local";
+
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+ if (pic ==""){
+ pic = "images/nonews.jpg";
+ }
+ $("#listview").append(
+  "<a href='#two' onclick='storeObject.idd="+id+"' data-transition='slide'>"
+  +"<li class='clearfix' style='border-radius:10px; width:98%;'><img src='"+pic+"' class='thumbnail' width='100' height='80' style='border-radius:10px;'>"
+  +"<h2 style='float:right;padding: 1px ;margin-right:2px;margin-top:3px;font-size:12px;'>"+sub+"</h2>"
+  +"<h4 class='price'>"+date+"</h4></li></a>"
+   ) ;
+  });
+ });
+ });
+ </script>
+ </div><!-- /page one -->
+ 
+ <!-- Start of first page: #sport -->
+<div data-role="page" id="inter" style="top:40px;">
+<div id="view" >
+	<div id="container" data-role="content" >	
+<ul class="list" id="listview2" >
+ </ul>
+ </div><!-- /content  -->
+ </div><!--/view-->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+		
+$(document).on('pagebeforeshow', '#inter', function(){
+$("#listview2").html("") ;
+ var url="http://185.217.90.164/beladi/json-news.php?news=inter";
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+ if (pic ==""){
+ pic = "images/nonews.jpg";
+ }
+ $("#listview2").append(
+  "<a href='#two' onclick='storeObject.idd="+id+"' data-transition='slide'>"
+  +"<li class='clearfix' style='border-radius:10px; width:98%;'><img src='"+pic+"' class='thumbnail' width='100' height='80' style='border-radius:10px;'>"
+  +"<h2 style='float:right;padding: 1px ;margin-right:2px;margin-top:3px;font-size:12px;'>"+sub+"</h2>"
+  +"<h4 class='price'>"+date+"</h4></li></a>"
+   ) ;
+  });
+ });
+ });
+ </script>
+ </div><!-- /page sport -->
+ 
+ <!-- Start of first page: #social -->
+<div data-role="page" id="sport" style="top:40px;">
+<div id="view" >
+	<div id="container" data-role="content" >	
+<ul class="list" id="listview3" >
+ </ul>
+ </div><!-- /content  -->
+ </div><!--/view-->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+$(document).on('pagebeforeshow', '#sport', function(){
+$("#listview3").html("") ;
+ var url="http://185.217.90.164/beladi/json-news.php?news=sport";
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+ if (pic ==""){
+ pic = "images/nonews.jpg";
+ }
+ $("#listview3").append(
+  "<a href='#two' onclick='storeObject.idd="+id+"' data-transition='slide'>"
+  +"<li class='clearfix' style='border-radius:10px; width:98%;'><img src='"+pic+"' class='thumbnail' width='100' height='80' style='border-radius:10px;'>"
+  +"<h2 style='float:right;padding: 1px ;margin-right:2px;margin-top:3px;font-size:12px;'>"+sub+"</h2>"
+  +"<h4 class='price'>"+date+"</h4></li></a>"
+   ) ;
+  });
+ });
+ });
+ </script>
+ </div><!-- /page social -->
+ 
+ 
+ 
+ 
+ <!-- Start of second page: #two -->
+<div data-role="page" id="two" style="top:40px;width:100%;" width="100%">
+
+	<div id="view" width="100%">
+	<div id="container" data-role="content" class="ulx">	
+	
+<script type="text/javascript">
+		
+$(document).on('pagebeforeshow', '#two', function(){
+var ip = window.location.hostname;
+var id = storeObject.idd;
+if (id == "") {
+var id = decodeURI(getUrlVars()["id"]);
+}
+//var id =84;
+ var url="http://185.217.90.164/beladi/json-news-details.php?id="+id ;
+//alert(id);
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+var news=field.news;
+var view=field.view;
+var taga=field.taga;
+if (taga !== '' ){
+ storeObject.tagaa = taga;
+}
+ view==view++;
+var dataString="id="+id+"&view="+view;
+request =$.ajax({
+ type: "POST",
+ url:"http://185.217.90.164/beladi/json-news-update.php",
+ data: dataString,
+ crossDomain: true,
+ cache: false,
+ 
+});
+ $("#lw").html(
+ 
+ "<li class='ulx' ><img src='"+pic
+ +"' class='thumbnailx' width='100%' ></li><li class='clearfix'><h5>"+sub
+ +"</h5></li>"
+ +"<li><h6 style='font-size:12px;color:grey;text-align:right;float:right;'>"+date +"</h6></li>"
+ +"<li class='clearfix'><h3>"+news+"</h3></li>"
+ +"<li class='clearfix' style='font-size:12px;color:grey;display: inline-block;text-align:right;float:right;' ><h5 style='font-size:12px;'>"+view+"   المشاهدات</h5></li>"
+ +"<li class='clearfix'><img src='images/share.png' onclick='shr()' width='20'> </li>"
+ +"<li class='fasil'></li>"
+ +"<li class='clearfix' style='padding: 18px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'><h6 >أخبار ذات صلة</h6></li>"
+  
+ ) ;
+ 
+ //   var tga = storeObject.tagaa;
+   var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-relate.php?id="+id ;
+
+$("#lwww").html("");
+ $.getJSON(url,function(result){
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+/////////////////////////////////////////////////////////////////////////////relate
+ $("#lwww").append(
+ "<a href='#three' onclick='storeObject.idd="+id+"' data-transition='slide'>"
+  +"<li class='clearfix' style='border-radius:10px; width:98%;'><img src='"+pic+"' class='thumbnail' width='100' height='80' style='border-radius:10px;'>"
+  +"<h2 style='float:right;padding: 1px ;margin-right:2px;margin-top:3px;font-size:12px;'>"+sub+"</h2>"
+  +"<h4 class='price'>"+date+"</h4></li></a>"
+   ) ;
+ });
+ });
+ 
+ 
+ 
+ });
+ //relat();
+ });
+  //--------------------------------------------
+  });
+  </script>
+  
+	<ul class="ulx" width="100%" style="width:100%;margin:0 auto;padding:0 ;" id="lw" >
+				</ul>
+	<p></p>	
+	</div><!-- /content -->
+	 
+	
+	<div id="container" data-role="content" height="100%">	
+	<ul class="list" id="lwww">
+				</ul>
+	</div><!-- /content -->
+	 </div><!--/view-->
+	 
+	<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("#one",{transition:'slide',reverse: true});      
+    }
+   event.preventDefault();
+});
+     </script>
+	
+</div><!-- /page two -->
+<!-- Start of second page: #three -->
+<div data-role="page" id="three" >
+
+	<div id="view" >
+	<div id="container" data-role="content" class="ulx">	
+	
+<script type="text/javascript">
+		
+$(document).on('pagebeforeshow', '#three', function(){
+//var ip = window.location.hostname;
+var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-details.php?id="+id ;
+
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+ var news=field.news;
+var view=field.view;
+var taga=field.taga;
+if (taga !== '' ){
+ storeObject.tagaa = taga;
+}
+ view==view++;
+var dataString="id="+id+"&view="+view;
+request =$.ajax({
+ type: "POST",
+ url:"http://185.217.90.164/beladi/json-news-update.php",
+ data: dataString,
+ crossDomain: true,
+ cache: false,
+ 
+});
+ $("#lw3").html(
+ 
+ "<li class='ulx' ><img src='"+pic
+ +"' class='thumbnailx' width='100%' ></li><li class='clearfix'><h5>"+sub
+ +"</h5></li>"
+ +"<li><h6 style='font-size:12px;color:grey;text-align:right;float:right;'>"+date +"</h6></li>"
+ +"<li class='clearfix'><h3>"+news+"</h3></li>"
+ +"<li class='clearfix' style='font-size:12px;color:grey;display: inline-block;text-align:right;float:right;' ><h5 style='font-size:12px;'>"+view+"   المشاهدات</h5></li>"
+ +"<li class='clearfix'><img src='images/share.png' onclick='shr()' width='20'> </li>"
+ +"<li class='fasil'></li>"
+ +"<li class='clearfix' style='padding: 18px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'><h6 >أخبار ذات صلة</h6></li>"
+  
+ ) ;
+ 
+ //   var tga = storeObject.tagaa;
+ //  var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-relate.php?id="+id ;
+$("#lwww3").html("");
+ $.getJSON(url,function(result){
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+
+ $("#lwww3").append(
+  "<a href='#two' onclick='storeObject.idd="+id+"' data-transition='slide'>"
+  +"<li class='clearfix' style='border-radius:10px; width:98%;'><img src='"+pic+"' class='thumbnail' width='100' height='80' style='border-radius:10px;'>"
+  +"<h2 style='float:right;padding: 1px ;margin-right:2px;margin-top:3px;font-size:12px;'>"+sub+"</h2>"
+  +"<h4 class='price'>"+date+"</h4></li></a>"
+   ) ;
+ });
+ });
+ 
+ 
+ 
+ });
+ //relat();
+ });
+  //--------------------------------------------
+  });
+  </script>
+  
+	<ul class="ulx" width="100%" style="width:100%;margin:0 auto;padding:0 ;" id="lw3">
+				</ul>
+	<p></p>	
+	</div><!-- /content -->
+	<div id="container" data-role="content"  height="100%">	
+	<ul class="list" id="lwww3">
+				</ul>
+	</div><!-- /content -->
+	 </div><!--/view-->
+	 
+	<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("#one",{transition:'slide',reverse: true});      
+    }
+   event.preventDefault();
+});
+     </script>
+	
+</div><!-- /page three -->
+<script>// share
+function shr() {
+console.log("Share clicked");
+// this is the complete list of currently supported params you can pass to the plugin (all optional)
+var options = {
+  message: 'share this', // not supported on some apps (Facebook, Instagram)
+  subject: 'the subject', // fi. for email
+  files: ['', ''], // an array of filenames either locally or remotely
+  url: 'https://www.website.com/foo/#bar?a=b',
+  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+}
+
+var onSuccess = function(result) {
+  console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+  console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+}
+
+var onError = function(msg) {
+alert(msg);
+  console.log("Sharing failed with message: " + msg);
+}
+
+window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+};
+</script>
+<!--------------------------------------------------Tab menu ------------------->
+<script>
+$("ul li").click(function(e) {
+
+  // make sure we cannot click the slider
+  if ($(this).hasClass('slider')) {
+    return;
+  }
+
+  /* Add the slider movement */
+
+  // what tab was pressed
+  var whatTab = $(this).index();
+var wd = $(window).width()/3;
+  // Work out how far the slider needs to go
+  var howFar = wd * whatTab;
+
+  $(".slider").css({
+    left: howFar + "px"
+  });
+
+  /* Add the ripple */
+
+  // Remove olds ones
+  $(".ripple").remove();
+
+  // Setup
+  var posX = $(this).offset().left,
+      posY = $(this).offset().top,
+      buttonWidth = $(this).width(),
+      buttonHeight = $(this).height();
+
+  // Add the element
+  $(this).prepend("<span class='ripple'></span>");
+
+  // Make it round!
+  if (buttonWidth >= buttonHeight) {
+    buttonHeight = buttonWidth;
+  } else {
+    buttonWidth = buttonHeight;
+  }
+
+  // Get the center of the element
+  var x = e.pageX - posX - buttonWidth / 2;
+  var y = e.pageY - posY - buttonHeight / 2;
+
+  // Add the ripples CSS and start the animation
+  $(".ripple").css({
+    width: buttonWidth,
+    height: buttonHeight,
+    top: y + 'px',
+    left: x + 'px'
+  }).addClass("rippleEffect");
+});
+</script>
+<script>
+
+$(document).ready(function() {
+var typ = window.location.href.slice(window.location.href.indexOf('#') + 1);
+
+if (typ == "inter"){
+
+var wd = $(window).width()/3;
+
+  var howFar = wd * 1;
+
+  $(".slider").css({
+    left: howFar + "px"
+  });
+
+}
+ if (typ == "sport"){
+var wd = 0;
+  // Work out how far the slider needs to go
+  var howFar = wd * 1;
+
+  $(".slider").css({
+    left: howFar + "px"
+  });
+
+}
+ 
+ 
+ });
+
+ 
+ 
+ 
+ 
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "356499381176",
+    "firebase_url": "https://beladi-tv.firebaseio.com",
+    "project_id": "beladi-tv",
+    "storage_bucket": "beladi-tv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356499381176:android:27438381f15fd1c0",
+        "android_client_info": {
+          "package_name": "com.betasoft.beladitv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356499381176-7o812c4f11m36672ukihcvpam3f14r19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSFnrAjh_fXy4dpex84UNLvLrafVtDxng"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

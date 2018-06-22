@@ -1,0 +1,131 @@
+
+@font-face {
+    font-family: 'TheSans';
+    src: url('TheSans.woff') format('woff'),
+         url('TheSans.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, h55,h22, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  font-family: TheSans;
+}
+html { height: 101%; background: #ffffff;}
+body { font-size: 62.5%; line-height: 1; font-family: TheSans; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+a { text-decoration: none; }
+
+/** content display **/
+#view { display: block; max-width: 800px; padding: 0; margin: 0; }
+
+#container { display: block; margin-top: 15px; }
+#container ul { }
+#container ul a li { 
+	display: block;
+	width: 100%;
+	height: 90px;
+	border-bottom: 2px solid #b9b9b9;
+		border-top: 3px solid #dadada;
+
+	margin-top: 0px;
+	
+}
+
+#container ul a { display: block; position: relative; width: 100%; border-radius:25px;}
+#container ul li h2 h5 { border-radius:25px;font-size: 12px; font-weight: bold; padding-top: 4px; float:right ; direction: rtl;  color: #00678d; word-wrap: break-word;}
+#container ul li p.desc { color: #555; font-family: TheSans; direction: rtl; word-wrap: break-word; overflow: hidden; }
+#container h2 {width:250px; text-align: right;line-height: 130%; margin:5px;font-size:25px;padding: 10px;color: #0b07a4;}
+#container h5 {width:90%; text-align:center ;font-size: 18px;padding: 10px;font-family: TheSans;}
+#container h55 {width:97%; text-align:center ;font-size: 18px;padding: 3px;font-family: TheSans;}
+#container h52 {color: #efefef;width:97%; text-align:center ;font-size: 12px;padding-bottom:10px;font-family: TheSans;floaf:left;text-align:left;}
+
+#container ul li .price { position: absolute; bottom: 10px; margin-top: 10px; left: 15px; font-weight: bold; color: #620670; }
+#container h3 {
+	width:90%; 
+    text-align: justify;
+    text-justify: inter-cluster;
+	color: #000000;
+	font-size: 14px;
+	font-family: TheSans; direction: rtl;
+	float:right ;
+	margin:7px;
+	padding: 7px;
+	line-height: 200%;
+}
+#container ul li img.thumbnail { 
+	background: #fff;
+	
+	display: inline-block;
+	float: right;
+	padding: 2px;
+	margin-top: 6px;
+	
+	margin-right: 8px;
+  
+}
+.fasil { 
+display: block;
+
+z-index: 9999;
+height: 5px;
+width: 100%;
+max-width: 800px;
+border-bottom: 1px solid #262422;
+
+opacity: 0.3;
+background: -webkit-linear-gradient(top, #701c63 1%,#701f7f 42%,#450956 52%,#4d0e60 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
+/** top header bar **/
+header { 
+display: block;
+position: fixed; 
+top: 0px;
+z-index: 9999;
+height: 30px;
+opacity: 1;
+width: 100%;
+max-width: 800px;
+border-bottom: 1px solid #262422;
+background: -webkit-linear-gradient(top, #7a545c 1%,#593a47 42%,#412c40 52%,#3f2f42 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
+header h11 {  display: inline-block;position: relative;font-size: 12px; font-family: TheSans; font-weight: bold; margin-top:5px; margin-right:10px; text-align: left; color: #ffffff;  }
+header h2 { position:absolute ; font-size: 26px; font-family: TheSans; font-weight: normal; margin:0;  text-align: left; color: #f9f6f7;  }
+header h22 {font-size: 14px; font-family: TheSans; font-weight: bold;  margin-top:5px;margin-right:7px;float: right; color: #ffffff;  }
+
+
+/** basic media queries **/
+@media only screen and (max-width: 480px) {
+	#container ul li h2 { font-size: 20px; }
+	
+	#container ul li img.thumbnail { margin-top: 2px; }
+}
+
+@media only screen and (max-width: 320px) {
+	#container ul li p.desc { display: none; }
+}
+
+
+/** clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }

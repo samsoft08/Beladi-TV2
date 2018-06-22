@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- This work is licensed under the W3C Software and Document License
+     (http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document).
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
+<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css" />
+<link rel="stylesheet" type="text/css" href="styles2.css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+
+<script>
+function getUrlVars() {
+ var vars = [], hash;
+ var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+ for (var i = 0; i < hashes.length; i++) {
+ hash = hashes[i].split('=');
+ vars.push(hash[0]);
+ vars[hash[0]] = hash[1];
+
+ }
+ return vars;
+}
+</script>
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+//var ip = window.location.hostname;
+//var id = decodeURI(getUrlVars()["id"]);
+ var url="http://192.168.120.38/beladi/json-news-details.php?id=64";
+alert(url);
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+var news=field.news;
+var view=field.view;
+var taga=field.taga;
+
+view=view++;
+//var dataString="id=64&view=55";
+//request =$.ajax({
+ //type: "POST",
+ //url:"http://192.168.120.38/beladi/json-news-update.php",
+ //data: dataString,
+ //crossDomain: true,
+ //cache: false,
+ 
+ //});
+ $("#listview").append(
+ 
+ "<li class='clearfix'><img src='"+pic+"' class='thumbnail' width='95%' height='50%'></li><li class='clearfix'><h4>"+sub+"</h4></li><li class='clearfix'><h3>"+news+"</h3></li><li></li><li class='clearfix'><h5 style='font-size:14px;color:grey;display: inline-block;' >"+view+"   المشاهدات<img  src='images/share.png' width='20' id='share' onclick='ev()'><input type='hidden' id='title' value='"+sub+"' /><input type='hidden' id='text' value='"+news+"' /><input type='hidden' id='url' value='https://example.com' /></h5><h6 style='font-size:14px;color:darkgreen;text-align:right;float:right;'>"+date+"</h6></li><li></li><li class='fasil'></li><li class='clearfix'><h6 style='padding: 18px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'>أخبار ذات صلة</h6></li>"
+  
+ ) ;
+ });
+ });
+//  var url="http://"+ip+"/beladi/json-news-relate.php?id="+id+"taga="+taga;
+
+ //$.getJSON(url,function(result){
+ //console.log(result);
+
+ //$.each(result, function(i, field){
+ //var id=field.id;
+ //var sub=field.sub;
+ //var date=field.date;
+ //var pic=field.pic;
+//var news=field.news;
+//var view=field.view;
+//var taga=field.taga;
+//$("#lw").append(
+//"<a href='news_details.php?id="+$id+"' data-transition='slide'><li class='clearfix'>	<img src='"+$pic+"'  class='thumbnail' width='80' //height='80'>	<h2>"+sub+"</h2><span class='price'>"+date+"</span></li></a>"
+//) ;
+ //});
+ //});
+ });
+ </script>
+
+
+<div data-role="page" id="home">
+        <header>
+			<h2> <a href='news.php' data-transition='slide' data-direction='reverse'><</a>  </h2>
+			<h1>الأخــبار</h1>
+		</header>
+<div id="view" >
+	<div id="container" data-role="content">
+	              <ul class="list" id="listview">
+                  </ul>
+                  <ul class="list" id="lw">
+				</ul>
+	</div>
+</div>
+<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("news.html",{transition:'slide',reverse: true});      
+    }
+    
+    event.preventDefault();
+});
+            </script>
+	<script>
+			 function ev() {
+			// Check if the current browser supports the Web Share API
+			alert('ev');
+			if (navigator.share !== undefined) {
+				// Get the canonical URL from the link tag
+			
+      const title_input = document.querySelector('#title');
+      const text_input = document.querySelector('#text');
+      const url_input = document.querySelector('#url');
+      const title =  title_input.value;
+      const text =  text_input.value;
+      const url =  url_input.value;
+				// Share it!
+				navigator.share({
+					title: title,
+					url: url,
+					text: text
+				}).then(() => console.log('Successful share'))
+					.catch((error) => alert(error));
+				ev.preventDefault();
+			} else {
+			alert('failed'); }
+		};
+	</script>	
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css" />
+<link rel="stylesheet" type="text/css" href="styles-prog.css">
+     <script type="text/javascript" src="cordova.js"></script>
+     <script src="js/jquery-2.1.3.js"></script>
+     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+     <script type="text/javascript" src="js/SocialSharing.js"></script>
+    <!-- <script type="text/javascript" src="js/share.js"></script>-->
+	 <style>
+	 .ulx {
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+ }
+	 .lis{
+	
+	 background-size: 100% 100%;
+	 border-radius:10px;
+	 background-color: #000;
+	 }
+		 .ui-page {
+    -webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
+box-shadow: none;
+}
+body{
+   -webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
+box-shadow: none;
+}
+	 .grad{
+	 background: -webkit-linear-gradient(top, #601348 0%,#56224c 30%,#17115e 100%); /* Chrome10-25,Safari5.1-6 */
+	  background-image: url("images/back.jpg");
+	  background-size:     cover;                  
+    background-repeat:   no-repeat;
+    background-position: center center;   
+	 display:block;
+	 height:100%;
+	 }
+	 .grad2{
+
+}
+body html {
+-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none ;
+}
+	 </style>
+	 <script>
+function myFunction() {
+  window.location.href="programs.html";
+}
+</script>
+</head> 
+<body class="grad" > 
+
+<script>
+function getUrlVars() {
+ var vars = [], hash;
+ var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+ for (var i = 0; i < hashes.length; i++) {
+ hash = hashes[i].split('=');
+ vars.push(hash[0]);
+ vars[hash[0]] = hash[1];
+
+ }
+ return vars;
+}
+</script>
+
+<div class="grad">
+ <header>
+<h11> <a href="#" onclick="myFunction()" style="color:white;	text-decoration:none; top:10px;"><img src="images/back-arrow.png" width="24" > </a> </h11>
+		<h22 id="ppg" style="margin-top:10px;"></h22>	
+<script type="text/javascript">
+		
+ $(document).ready(function() {
+ var prog = decodeURI(getUrlVars()["prog"]);
+ var url="http://185.217.90.164/beladi/json-progs-details.php?prog="+prog ;
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var name=field.name;
+ $("#ppg").html(
+  name
+   ) ;
+  });
+ });
+ });
+ </script>
+</header>
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one" style="top:20px;">
+
+<div id="view" >
+	<div id="container" data-role="content" >	
+	<div>
+
+</div>
+<ul class="list" id="listview">
+ </ul>
+ </div><!-- /content  -->
+ </div><!--/view-->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+ $(document).ready(function() {
+ var prog = decodeURI(getUrlVars()["prog"]);
+ var url="http://185.217.90.164/beladi/json-progs-details.php?prog="+prog ;
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+
+ var link=field.link;
+
+ $("#listview").append(
+  "<a href='#two' onclick='storeObject.idd="+id
+  +"' data-transition='slide'><li class='lis' id='bim' style='background-image:url(\""+"programs/"+prog+"_small.jpg"+"\")'><h2 style='float:right;padding: 2px ;margin-right:12px;margin-top:auto;font-size:14px;color:#513857'>"+sub
+  +"</h2><h4 style='text-align:right;font-size:13px;margin-left: 100px;color:#49554b' class='price'>"
+  +date+"</h4></li></a>"
+   ) ;
+ //  document.getElementById("bim").style.backgroundImage =  "url('"+bimage+"')";
+  });
+ });
+ });
+  
+ </script>
+ </div><!-- /page one -->
+ 
+ 
+ 
+ 
+ <!-- Start of second page: #two -------------------------------------------------------------------------------->
+<div data-role="page" id="two" >
+
+	<div id="view" >
+	<div id="container" data-role="content"  class="ulx">	
+	
+	<ul class="ulx" id="lwxx" style="width:100%;margin-top:50px;top:50px;" >
+</ul>
+	</div><!-- /content -->
+	 </div><!--/view-->
+<script type="text/javascript">
+		
+$(document).on('pagebeforeshow', '#two', function(){
+
+var id = storeObject.idd;
+if (id == "") {
+var id = decodeURI(getUrlVars()["id"]);
+}
+ var url="http://185.217.90.164/beladi/json-progs-details.php?id="+id ;
+
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ 
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+var view=field.view;
+var link = field.link;
+var name=field.name;
+var storeObject = { lnk : '',sb:''};
+storeObject.lnk=link;
+storeObject.sb=sub;
+
+ view==view++;
+var dataString="id="+id+"&view="+view;
+request =$.ajax({
+ type: "POST",
+ url:"http://185.217.90.164/beladi/json-prog-update.php",
+ data: dataString,
+ crossDomain: true,
+ cache: false,
+
+});
+
+ $("#lwxx").html(
+ "<li class='clearfix' style='padding: 8px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'><h6 ></h6></li>"
+  
+ +"<li class='clearfix' style='width:100%;'><iframe bgcolor='#000' width='100%' height='240' src='https://www.youtube.com/embed/"+link+"' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe></li>"
+ 
+ +"<li class='clearfix' style='padding: 2px; font-size:13;pxdisplay:inline-block;text-align:right;float:right;'><h55>"+sub +"</h55></li>"
+ +"<li><h16 style='font-size:12px;color:grey;float:left;'>"+date +"</h16></li>"
+
+ +"<li class='fasil' style='background: -webkit-linear-gradient(top, #f9f9f9 1%,#f9f9f9 42%,#f9f9f9 52%,#9171b2 100%);opacity:0.8;height:21px;font-size:12px;color:#381e67;display: inline-block;text-align:right;float:right;padding:5px 0 0 0;margin-top:15px;'><img src='images/share2.png' onclick='shrr(\""+sub+"\",\""+link+"\")' width='20'  style='float:left;margin-left:12px;top:3px;'> <h15 style='font-size:12px;float:right;top:0px;margin-right:12px;'>"+view+"   المشاهدات</h15></li>"
+ 
+ 
+  
+ ) ;
+ 
+   var id = storeObject.idd;
+ 
+ });
+ //relat();
+ });
+  //--------------------------------------------
+  });
+  </script>
+  
+	
+	
+	
+	 
+	<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("#one",{transition:'slide',reverse: true});      
+    }
+   event.preventDefault();
+});
+     </script>
+	
+</div><!-- /page two ------------------------------------------------------------------------>
+
+<script>// share
+
+function shrr(a,b) {
+var link= b;
+var sub= a;
+// this is the complete list of currently supported params you can pass to the plugin (all optional)
+var options = {
+  message: 'Beladi TV ', // not supported on some apps (Facebook, Instagram)
+  subject: sub, // fi. for email
+  files: ['', ''], // an array of filenames either locally or remotely
+  url: 'https://www.youtube.com/watch?v='+link,
+  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+}
+
+var onSuccess = function(result) {
+  console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+  console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+}
+
+var onError = function(msg) {
+alert(msg);
+  console.log("Sharing failed with message: " + msg);
+}
+
+window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+};
+</script>
+</div>
+</body>
+</html>

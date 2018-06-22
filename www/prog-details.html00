@@ -1,0 +1,297 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css" />
+<link rel="stylesheet" type="text/css" href="styles-prog.css">
+     <script type="text/javascript" src="cordova.js"></script>
+     <script src="js/jquery-2.1.3.js"></script>
+     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+     <script type="text/javascript" src="js/SocialSharing.js"></script>
+     <script type="text/javascript" src="js/share.js"></script>
+	 <style>
+	 .lis{
+	 background-image:url('kasi2.jpg');
+	 background-size: 100% 100%;
+	 }
+	 </style>
+</head> 
+<body class="lis"> 
+<script>
+function getUrlVars() {
+ var vars = [], hash;
+ var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+ for (var i = 0; i < hashes.length; i++) {
+ hash = hashes[i].split('=');
+ vars.push(hash[0]);
+ vars[hash[0]] = hash[1];
+
+ }
+ return vars;
+}
+</script>
+                 <header>
+	        	<h1>الاخبار</h1>
+		</header>
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+<div id="view" >
+	<div id="container" data-role="content" >	
+<ul class="list" id="listview">
+ </ul>
+ </div><!-- /content  -->
+ </div><!--/view-->
+ 		<script type="text/javascript">
+		var storeObject = { idd : '',tagaa : ''};
+ $(document).ready(function() {
+ var prog = decodeURI(getUrlVars()["prog"]);
+ var url="http://185.217.90.164/beladi/json-progs-details.php?prog="+prog ;
+ $.getJSON(url,function(result){
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var prog=field.prog;
+ var link=field.link;
+
+ $("#listview").append(
+  "<a href='#two' onclick='storeObject.idd="+id
+  +"' data-transition='slide'><li class='lis' ><h2 style='float:left;padding: 2px ;margin-right:12px;margin-top:10px;'>"+sub
+  +"</h2><h4 style='text-align:left;font-size:18px;margin-right: 100px;' class='price'>"
+  +date+"</h4></li></a>"
+   ) ;
+  });
+ });
+ });
+ </script>
+ </div><!-- /page one -->
+ <!-- Start of second page: #two -->
+<div data-role="page" id="two" >
+
+	<div id="view" >
+	<div id="container" data-role="content" >	
+	
+<script type="text/javascript">
+		
+$(document).on('pagebeforeshow', '#two', function(){
+var ip = window.location.hostname;
+var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-progs-details.php?id="+id ;
+
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+var view=field.view;
+if (taga !== '' ){
+ storeObject.tagaa = taga;
+}
+ view==view++;
+var dataString="id="+id+"&view="+view;
+request =$.ajax({
+ type: "POST",
+ url:"http://185.217.90.164/beladi/json-prog-update.php",
+ data: dataString,
+ crossDomain: true,
+ cache: false,
+ 
+});
+ $("#lw").html(
+ 
+ "<li class='clearfix'><img src='"+pic
+ +"' class='thumbnail' width='95%' height='50%'></li><li class='clearfix'><h5>"+sub
+ +"</h5></li>"
+ +"<li><h6 style='font-size:12px;color:grey;text-align:right;float:right;'>"+date +"</h6></li>"
+ +"<li class='clearfix'><h3>"+news+"</h3></li>"
+ +"<li class='clearfix' style='font-size:12px;color:grey;display: inline-block;text-align:right;float:right;' ><h5 style='font-size:12px;'>"+view+"   المشاهدات</h5></li>"
+ +"<li class='clearfix'><img src='images/share.png' onclick='shr()' width='20'> </li>"
+ +"<li class='fasil'></li>"
+ +"<li class='clearfix' style='padding: 18px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'><h6 >أخبار ذات صلة</h6></li>"
+  
+ ) ;
+ 
+ //   var tga = storeObject.tagaa;
+   var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-relate.php?id="+id ;
+
+$("#lwww").html("");
+ $.getJSON(url,function(result){
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+
+ $("#lwww").html(
+  "<li><a href='#three' onclick='storeObject.idd="+id
+  +"' data-transition='slide'><li class='clearfix' style='float:right;'><img src='"+pic 
+  +"' class='thumbnail' width='80' height='80'><h2 style='float:right;margin-top:13px'>"+sub+"</h2></li>"
+  +"<li style='margin-top:52px;'><span class='price' >"+date+"</span></li></a>"
+   ) ;
+ });
+ });
+ 
+ 
+ 
+ });
+ //relat();
+ });
+  //--------------------------------------------
+  });
+  </script>
+  
+	<ul class="list" id="lw">
+				</ul>
+	<p></p>	
+	<ul class="list" id="lwww">
+				</ul>
+	</div><!-- /content -->
+	 </div><!--/view-->
+	 
+	<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("#one",{transition:'slide',reverse: true});      
+    }
+   event.preventDefault();
+});
+     </script>
+	
+</div><!-- /page two -->
+<!-- Start of second page: #three -->
+<div data-role="page" id="three" >
+
+	<div id="view" >
+	<div id="container" data-role="content" >	
+	
+<script type="text/javascript">
+		
+$(document).on('pagebeforeshow', '#three', function(){
+//var ip = window.location.hostname;
+var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-details.php?id="+id ;
+
+ $.getJSON(url,function(result){
+ //console.log(result);
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+ var news=field.news;
+var view=field.view;
+var taga=field.taga;
+if (taga !== '' ){
+ storeObject.tagaa = taga;
+}
+ view==view++;
+var dataString="id="+id+"&view="+view;
+request =$.ajax({
+ type: "POST",
+ url:"http://185.217.90.164/beladi/json-news-update.php",
+ data: dataString,
+ crossDomain: true,
+ cache: false,
+ 
+});
+ $("#lw3").html(
+ 
+ "<li class='clearfix'><img src='"+pic
+ +"' class='thumbnail' width='95%' height='50%'></li><li class='clearfix'><h5>"+sub
+ +"</h5></li>"
+ +"<li><h6 style='font-size:12px;color:grey;text-align:right;float:right;'>"+date +"</h6></li>"
+ +"<li class='clearfix'><h3>"+news+"</h3></li>"
+ +"<li class='clearfix' style='font-size:12px;color:grey;display: inline-block;text-align:right;float:right;' ><h5 style='font-size:12px;'>"+view+"   المشاهدات</h5></li>"
+ +"<li class='clearfix'><img src='images/share.png' onclick='shr()' width='20'> </li>"
+ +"<li></li><li class='fasil'></li>"
+ +"<li class='clearfix' style='padding: 18px; font-size:14px;color:RebeccaPurple ;display:inline-block;text-align:right;float:right;'><h6 >أخبار ذات صلة</h6></li>"
+  
+ ) ;
+ 
+ //   var tga = storeObject.tagaa;
+ //  var id = storeObject.idd;
+
+ var url="http://185.217.90.164/beladi/json-news-relate.php?id="+id ;
+$("#lwww3").html("");
+ $.getJSON(url,function(result){
+
+ $.each(result, function(i, field){
+ var id=field.id;
+ var sub=field.sub;
+ var date=field.date;
+ var pic=field.pic;
+
+ $("#lwww3").html(
+   "<li></li><a href='#two' onclick='storeObject.idd="+id
+  +"' data-transition='slide'><li class='clearfix' style='float:right;'><img src='"+pic 
+  +"' class='thumbnail' width='80' height='80'><h2 style='float:right;margin-top:13px'>"+sub+"</h2></li>"
+  +"<li style='margin-top:52px;'><span class='price' >"+date+"</span></li></a>"
+   ) ;
+ });
+ });
+ 
+ 
+ 
+ });
+ //relat();
+ });
+  //--------------------------------------------
+  });
+  </script>
+  
+	<ul class="list" id="lw3">
+				</ul>
+	<p></p>	
+	<ul class="list" id="lwww3">
+				</ul>
+	</div><!-- /content -->
+	 </div><!--/view-->
+	 
+	<script type="text/javascript">
+$('body').bind('swiperight',function(event){
+    if (event.type == "swiperight") {
+       jQuery.mobile.changePage("#one",{transition:'slide',reverse: true});      
+    }
+   event.preventDefault();
+});
+     </script>
+	
+</div><!-- /page three -->
+<script>// share
+function shr() {
+console.log("Share clicked");
+// this is the complete list of currently supported params you can pass to the plugin (all optional)
+var options = {
+  message: 'share this', // not supported on some apps (Facebook, Instagram)
+  subject: 'the subject', // fi. for email
+  files: ['', ''], // an array of filenames either locally or remotely
+  url: 'https://www.website.com/foo/#bar?a=b',
+  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+}
+
+var onSuccess = function(result) {
+  console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+  console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+}
+
+var onError = function(msg) {
+alert(msg);
+  console.log("Sharing failed with message: " + msg);
+}
+
+window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+};
+</script>
+</body>
+</html>
